@@ -1,3 +1,5 @@
+import random
+
 def symbol(player):
     "return O for the current player True and X for the current player False"
     if player == 1:
@@ -22,6 +24,9 @@ def playerinput(grid):
             print("Error, field is already filled. Try again.")
         else: 
             return selection
+
+def startplayer():
+    return random.randint(1,2)
 
 def switch(player):
     if player == 1:

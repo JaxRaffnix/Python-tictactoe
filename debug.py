@@ -1,30 +1,24 @@
-grid = ["X", "X", "X", 
+import endgame as ge
+import grid as gr
+import playeraction as pa
+
+grid = ["O", "O", "O", 
         "X", "X", "O", 
-        "X", "X", "X",]
+        "7", "8", "9",]
 
-# grid = ["X", "X", "O", 
-#         "O", "O", "X", 
-#         "X", "X", "9",]
+winconditions = [[0,1,2], [3,4,5], [6,7,8],     # horizontal
+                     [0,3,6], [1,4,7], [2,5,8],     # vertical
+                     [0,4,8], [3,4,6]               # diagonal
+    ]
 
-def printgrid():
-    "print the current grid to the console"
-    print(grid[0] + "|" + grid[1] + "|" + grid[2])
-    print(grid[3] + "|" + grid[4] + "|" + grid[5])
-    print(grid[6] + "|" + grid[7] + "|" + grid[8])
 
-def checkdraw():
-    if all( (i == "X") or (i =="O") for i in grid ):
-        print("Draw")
+for j in winconditions:
+    if all( grid[i] == "X" for i in j) or all( grid[i] == "O" for i in j) :
+        print(True)
     else:
-        print("no draw")
+        print(False)
 
-checkdraw()
+# for j in wincon:
+#     if all( (grid[i] == "X") or (grid[i] == "O") for i in j):
 
-
-def checkdrawtest():
-    if all( (i == "X") or (i == "O") for i in grid ):
-        return True
-    else:
-        return False
-    
-print(checkdrawtest())
+# gr.printgrid(grid)
