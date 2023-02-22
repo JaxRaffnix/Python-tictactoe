@@ -9,9 +9,9 @@ import grid as gr
 grid = ["1", "2", "3", 
         "4", "5", "6", 
         "7", "8", "9",]
-# grid = ["X", "O", "X", 
-#         "X", "O", "X", 
-#         "O", "8", "9",]
+# grid = ["X", "2", "O", 
+#         "O", "O", "X", 
+#         "X", "O", "X",]
         
 
 "loop through each players turn."
@@ -22,6 +22,7 @@ while True:
     gr.printgrid(grid)
     pa.playermove(grid, currentplayer)
     if eg.gameend(grid, currentplayer):
+        gr.printgrid(grid)
         break
     else:
         turn = turn + 1
