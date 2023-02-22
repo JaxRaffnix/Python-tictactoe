@@ -3,6 +3,7 @@ class color:
     BLUE = "\033[94m"
     END = "\033[0m"
 
+abort_sequence = "q"
 
 player1_symbol = color.BLUE + "O" + color.END
 player2_symbol = color.YELLOW + "X" + color.END
@@ -24,7 +25,7 @@ def playermove(grid):
     while True:
         try:
             choice = input("Choose a field: ")
-            if choice == "q":
+            if choice == abort_sequence:
                 return choice
             choice = int(choice) - 1
             if choice < 0 or choice > 8:

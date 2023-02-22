@@ -1,5 +1,5 @@
-import random
 import player as pl
+import random
 
 
 def aimove(grid):
@@ -14,4 +14,4 @@ def aimove(grid):
     else:
         choice = int(random.choice(selection))
 
-    return choice - 1
+    return (choice - 1)

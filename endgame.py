@@ -3,13 +3,14 @@ import player as pl
 
 def checkwin(grid):
     "Check if a win condition is met."
-    winconditions = [[0, 1, 2], [3, 4, 5], [6, 7, 8],     # horizontal
-                     [0, 3, 6], [1, 4, 7], [2, 5, 8],     # vertical
+    winconditions = [[0, 1, 2], [3, 4, 5], [6, 7, 8],   # horizontal
+                     [0, 3, 6], [1, 4, 7], [2, 5, 8],   # vertical
                      [0, 4, 8], [2, 4, 6]]              # diagonal
-
     for list in winconditions:
         if all(grid[i] == pl.symbol(1) for i in list) or all(grid[i] == pl.symbol(2) for i in list):
             return True
+        else:
+            return False
 
 
 def checkdraw(grid):
@@ -20,7 +21,16 @@ def checkdraw(grid):
         return False
 
 
-def gameend(grid, player):
+def checkabort(field, player):
+    if field == pl.abort_sequence:
+        print("Abort from player " +
+              str(pl.symbol(player)) + "! Games has ended.")
+        return True
+    else:
+        return False
+
+
+def checkgameend(grid, player):
     "Return True if the game is either a win or a draw."
     if checkwin(grid):
         print("\nWin for Player: " + str(pl.symbol(player)) + "! Games has ended.")
@@ -30,9 +40,3 @@ def gameend(grid, player):
         return True
     else:
         return False
-
-
-def abort(player):
-    print("Aborting move from player " +
-          str(pl.symbol(player)) + "! Games has ended.")
-    # break

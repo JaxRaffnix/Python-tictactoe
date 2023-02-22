@@ -19,11 +19,11 @@ def turn(grid, aimode):
             print("\nTurn", turn, "\tPlayer", pl.symbol(currentplayer))
             gr.printgrid(grid)
             field = pl.playermove(grid)
-            if field == "q":
-                eg.abort(currentplayer)
+            if eg.checkabort(field, currentplayer):
                 break
-            mark(grid, field, currentplayer)
-        if eg.gameend(grid, currentplayer):
+            else:
+                mark(grid, field, currentplayer)
+        if eg.checkgameend(grid, currentplayer):
             gr.printgrid(grid)
             break
         else:
@@ -32,12 +32,7 @@ def turn(grid, aimode):
 
 
 def mark(grid, field, player):
-    "Fill the grid field selected by the player with the corresponding mark."
-    if field == "q":
-        return False
-    else:
-        grid[field] = pl.symbol(player)
-        return True
+    grid[field] = pl.symbol(player)
 
 
 def switch(player):

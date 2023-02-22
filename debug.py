@@ -17,4 +17,4 @@ for list in winconditions:
 
 # print(checkwin(grid))
 gr.printgrid(grid)
-eg.gameend(grid, 1)
+eg.checkgameend(grid, 1)

@@ -6,17 +6,36 @@
 import game as game
 import grid as gr
 
+def gamehelp():
+    print("Solo modus is the default. The AI plays random.\n" + 
+          "You have the following options:\n" +
+          "- help text\t\t'help'\n" + 
+          "- swap the symbols for player 1 and 2\t'symbolselect'\n" +
+          "- two player modus\t'twoplayer'\n" + 
+          "- solo modus vs AI\t'oneplayer'\n" +
+          "- start a game\t\t'start'\n" + 
+          "- exit a game \t\t'q'\n" + 
+          "- end the program\t'exit'")
+    
+def playerselect():
+    "prompt the user to pick a color"
+
 games = 1
 aimode = True
-print("Welcome to tic-tac-toe!")
-print("You have the following options:\n- two player modus\t'twoplayer'\n- one player modus\t'oneplayer'\n- start a game\t\t'start'\n- exit a game and take a Loose\t'q'\n- end the program\t'exit'")
 
+print("Welcome to tic-tac-toe!")
+gamehelp()
 while True:
     prompt = input("\nGame Options: ")
+    if prompt == "help":
+        gamehelp()
+        continue
     if prompt == "oneplayer":
         aimode = True
+        continue
     if prompt == "twoplayer":
         aimode = False
+        continue
     if prompt == "start":
         print("\nGAME", games)
         grid = gr.creategrid()
@@ -24,7 +43,7 @@ while True:
         games += 1
         continue
     if prompt == "exit":
-        print("Games has been terminated.")
+        print("Program has been terminated.")
         break
     else:
         print("Error, wrong input. Try again.")
