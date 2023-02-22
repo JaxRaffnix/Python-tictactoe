@@ -1,9 +1,9 @@
 # Goal: Implement tic tac toe for the command line.
 #       Incldues win/draw-detection and random starting player selection.
 #       Switch between two player mode and pc, includes AI that does random moves
-# Requirements: python random package
+# Requirements: python random plckage
 
-import game as pt
+import game as game
 import grid as gr
 
 games = 1
@@ -20,7 +20,7 @@ while True:
     if prompt == "start":
         print("\nGAME", games)
         grid = gr.creategrid()
-        pt.turns(grid, aimode)
+        game.turn(grid, aimode)
         games += 1
         continue
     if prompt == "exit":
@@ -28,4 +28,3 @@ while True:
         break
     else:
         print("Error, wrong input. Try again.")
-

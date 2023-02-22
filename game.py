@@ -1,32 +1,53 @@
 import endgame as eg
 import grid as gr
-import playeraction as pa
+import player as pl
 import randomai as rai
+import random
 
 
-def turns(grid, aimode):
+def turn(grid, aimode):
     "loop through each players turn."
     turn = 1
-    currentplayer = pa.randomstart()
+    currentplayer = randomstart()
     while True:
         if currentplayer == 2 and aimode:
             field = rai.aimove(grid)
             print("\nTurn", turn, "\t AI")
             print("AI chose field: ", field)
-            pa.mark(grid, field, currentplayer)
-            # grid[field] = pa.symbol(currentplayer)
+            mark(grid, field, currentplayer)
         else:
-            print("\nTurn" , turn, "\tPlayer", pa.symbol(currentplayer))
+            print("\nTurn", turn, "\tPlayer", pl.symbol(currentplayer))
             gr.printgrid(grid)
-            field = pa.playermove(grid)
-            pa.mark(grid, field, currentplayer)
-
-            # if not pa.playermove(grid, currentplayer):
-            #     print("Aborting move from player " + str(pa.symbol(currentplayer)) + "! Games has ended.")
-            #     break
+            field = pl.playermove(grid)
+            if field == "q":
+                eg.abort(currentplayer)
+                break
+            mark(grid, field, currentplayer)
         if eg.gameend(grid, currentplayer):
             gr.printgrid(grid)
             break
         else:
-            turn = turn + 1
-            currentplayer = pa.switch(currentplayer)
+            turn += 1
+            currentplayer = switch(currentplayer)
+
+
+def mark(grid, field, player):
+    "Fill the grid field selected by the player with the corresponding mark."
+    if field == "q":
+        return False
+    else:
+        grid[field] = pl.symbol(player)
+        return True
+
+
+def switch(player):
+    "Switch control over to the other player."
+    if player == 1:
+        return 2
+    else:
+        return 1
+
+
+def randomstart():
+    "Choose a random starting player."
+    return random.randint(1, 2)

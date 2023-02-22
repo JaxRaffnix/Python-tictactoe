@@ -1,8 +1,10 @@
 def creategrid():
-    grid = ["1", "2", "3", 
-            "4", "5", "6", 
-            "7", "8", "9",]
-    return grid
+    "return the default starting grid"
+    defaultgrid = ["1", "2", "3",
+                   "4", "5", "6",
+                   "7", "8", "9",]
+    return defaultgrid
+
 
 def printgrid(grid):
     "print the current grid to the console"
