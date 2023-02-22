@@ -19,24 +19,15 @@ def symbol(player):
 
 def playermove(grid, player):
     "Fill the grid field selected by the player with the corresponding mark."
-    try:
-        grid[playerinput(grid, player)] = symbol(player)
-    except TypeError:
-        pass
-    except ValueError:
-        pass
-
+    grid[playerinput(grid, player)] = symbol(player)
+    
 def playerinput(grid, player):
     "prompt the user for a valid field."
     while True:
         try:
             selection = input("Choose a field: ")
             if selection == "q":
-                print("Aborting move from player " + str(player) + "! Games has ended.")
-                return 0
-        except ValueError:
-            print("Error, numbers from 1 to 9 are allowed. Try again.")
-        else:
+                eg.abort(player)
             selection = int(selection) -1
             if selection < 0 or selection > 8:
                 print("Error, only fields 1 to 9 are allowed. Try again.")
@@ -44,6 +35,10 @@ def playerinput(grid, player):
                 print("Error, field is already filled. Try again.")
             else: 
                 return selection
+        except ValueError:
+            print("Error, only numbers 1 to 9 are allowed. Try again.")
+        # else:
+            
 
 def randomstart():
     "Choose a random starting player."

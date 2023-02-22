@@ -4,6 +4,7 @@
 import playeraction as pa
 import endgame as eg
 import grid as gr
+import randomai as rai
 
 # gr.creategrid()
 grid = ["1", "2", "3", 
@@ -20,7 +21,10 @@ currentplayer = pa.randomstart()
 while True:
     print("\nTurn" , turn, "\tPlayer", pa.symbol(currentplayer))
     gr.printgrid(grid)
-    pa.playermove(grid, currentplayer)
+    if currentplayer == 2:
+        rai.aimove(grid, currentplayer)
+    else:
+        pa.playermove(grid, currentplayer)
     if eg.gameend(grid, currentplayer):
         gr.printgrid(grid)
         break

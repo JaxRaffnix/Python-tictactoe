@@ -28,6 +28,7 @@ def gameend(grid, player):
     else:
         return False
     
-# def abort(player):
-    
+def abort(player):
+    print("Aborting move from player " + str(pa.symbol(player)) + "! Games has ended.")
+    exit()
     
