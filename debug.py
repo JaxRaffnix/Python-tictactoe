@@ -1,24 +1,20 @@
-import endgame as ge
+import endgame as eg
 import grid as gr
 import playeraction as pa
 
-grid = ["O", "O", "O", 
-        "X", "X", "O", 
-        "7", "8", "9",]
+grid = ["0", "1", "2", 
+        "X", "X", "X", 
+        "6", "7", "8",]
 
 winconditions = [[0,1,2], [3,4,5], [6,7,8],     # horizontal
-                     [0,3,6], [1,4,7], [2,5,8],     # vertical
-                     [0,4,8], [3,4,6]               # diagonal
-    ]
+                 [0,3,6], [1,4,7], [2,5,8],     # vertical
+                 [0,4,8], [2,4,6]]              # diagonal
 
-
-for j in winconditions:
-    if all( grid[i] == "X" for i in j) or all( grid[i] == "O" for i in j) :
+for list in winconditions:
+    if all(grid[i] == pa.symbol(1) for i in list) or all(grid[i] == pa.symbol(2) for i in list):
         print(True)
-    else:
-        print(False)
+        break
 
-# for j in wincon:
-#     if all( (grid[i] == "X") or (grid[i] == "O") for i in j):
-
-# gr.printgrid(grid)
+# print(checkwin(grid))
+gr.printgrid(grid)
+eg.gameend(grid, 1)

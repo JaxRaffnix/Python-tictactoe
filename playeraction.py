@@ -1,7 +1,7 @@
 import random
 
 def symbol(player):
-    "return O for the current player True and X for the current player False"
+    "return O for player 1 and X for  player 2."
     if player == 1:
         return "O"
     elif player == 2:
@@ -10,12 +10,12 @@ def symbol(player):
         print("Error, unsupported player number: " + str(player))
         ValueError()
 
-def move(grid, player):
-    "change the grid field selected by the player"
+def playermove(grid, player):
+    "Fill the grid field selected by the player with the corresponding mark."
     grid[playerinput(grid)] = symbol(player)
 
 def playerinput(grid):
-    "get an input field from the player"
+    "prompt the user for a valid field."
     while True:
         selection = int(input("Choose a field: ")) -1
         if selection < 0 or selection > 8:
@@ -25,10 +25,12 @@ def playerinput(grid):
         else: 
             return selection
 
-def startplayer():
+def randomstart():
+    "Choose a random starting player."
     return random.randint(1,2)
 
 def switch(player):
+    "Switch control over to the other player."
     if player == 1:
         return 2
     else:
