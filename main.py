@@ -1,33 +1,31 @@
-# Goal: Implement tic tac toe for command line.
+# Goal: Implement tic tac toe for the command line.
 #       Incldues win/draw-detection and random starting player selection.
+#       Switch between two player mode and pc, includes AI that does random moves
+# Requirements: python random package
 
-import playeraction as pa
-import endgame as eg
+import game as pt
 import grid as gr
-import randomai as rai
 
-# gr.creategrid()
-grid = ["1", "2", "3", 
-        "4", "5", "6", 
-        "7", "8", "9",]
-# grid = ["X", "2", "O", 
-#         "O", "O", "X", 
-#         "X", "O", "X",]
-        
+games = 1
+aimode = True
+print("Welcome to tic-tac-toe!")
+print("You have the following options:\n- two player modus\t'twoplayer'\n- one player modus\t'oneplayer'\n- start a game\t\t'start'\n- exit a game and take a Loose\t'q'\n- end the program\t'exit'")
 
-"loop through each players turn."
-turn = 1
-currentplayer = pa.randomstart()
 while True:
-    print("\nTurn" , turn, "\tPlayer", pa.symbol(currentplayer))
-    gr.printgrid(grid)
-    if currentplayer == 2:
-        rai.aimove(grid, currentplayer)
-    else:
-        pa.playermove(grid, currentplayer)
-    if eg.gameend(grid, currentplayer):
-        gr.printgrid(grid)
+    prompt = input("\nGame Options: ")
+    if prompt == "oneplayer":
+        aimode = True
+    if prompt == "twoplayer":
+        aimode = False
+    if prompt == "start":
+        print("\nGAME", games)
+        grid = gr.creategrid()
+        pt.turns(grid, aimode)
+        games += 1
+        continue
+    if prompt == "exit":
+        print("Games has been terminated.")
         break
     else:
-        turn = turn + 1
-        currentplayer = pa.switch(currentplayer)
+        print("Error, wrong input. Try again.")
+

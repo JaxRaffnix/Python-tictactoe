@@ -1,8 +1,8 @@
-# def creategrid():
-#     global grid 
-#     grid = ["1", "2", "3", 
-#             "4", "5", "6", 
-#             "7", "8", "9",]
+def creategrid():
+    grid = ["1", "2", "3", 
+            "4", "5", "6", 
+            "7", "8", "9",]
+    return grid
 
 def printgrid(grid):
     "print the current grid to the console"

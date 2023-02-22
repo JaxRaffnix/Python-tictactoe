@@ -1,12 +1,18 @@
 import random
 import playeraction as pa
 
-def aimove(grid, player):
-    "Fill the grid field selected by ai with the corresponding mark."
+def aimove(grid):
+    "Choose a random, valid field and return the choice."
     selection = []
     for i in grid:
-        if i != pa.symbol(1) and i != pa.symbol(2): 
+        if i != pa.symbol(1) and i != pa.symbol(2):     
             selection += i
 
-    choice = int(random.choice(selection)) -1
-    grid[choice] = pa.symbol(player)
+    if "5" in selection:
+        choice = int("5")
+    else:
+        choice = int(random.choice(selection))
+    
+    return choice -1
+    
+    # grid[choice-1] = pa.symbol(player)

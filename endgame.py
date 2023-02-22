@@ -20,15 +20,15 @@ def checkdraw(grid):
 def gameend(grid, player):
     "Return True if the game is either a win or a draw."
     if checkwin(grid):
-        print("Win for Player: " + str(pa.symbol(player)) + "! Games has ended.")
+        print("\nWin for Player: " + str(pa.symbol(player)) + "! Games has ended.")
         return True
     if checkdraw(grid):
-        print("Draw! Game has ended.")
+        print("\nDraw! Game has ended.")
         return True
     else:
         return False
     
-def abort(player):
-    print("Aborting move from player " + str(pa.symbol(player)) + "! Games has ended.")
-    exit()
+# def abort(player):
+#     print("Aborting move from player " + str(pa.symbol(player)) + "! Games has ended.")
+#     exit()
     
