@@ -1,12 +1,16 @@
 class color:
     YELLOW = "\033[93m"
     BLUE = "\033[94m"
+    RED = "\033[95m"
     END = "\033[0m"
-
-abort_sequence = "q"
 
 player1_symbol = color.BLUE + "O" + color.END
 player2_symbol = color.YELLOW + "X" + color.END
+
+error = color.RED + "Error" + color.END
+
+
+abort_sequence = "q"
 
 
 def symbol(player):
@@ -19,19 +23,25 @@ def symbol(player):
         print("Error, unsupported player number: " + str(player))
         ValueError()
 
+def switchmark():
+    "switches mark for player 1 and 2"
+    "Missing: revert changes"
+    player1_symbol = color.YELLOW + "X" + color.END
+    player2_symbol = color.BLUE + "O" + color.END
 
-def playermove(grid):
-    "prompt the user for a valid field."
+
+def playermove(board):
+    "prompt the user for a valid grid."
     while True:
         try:
-            choice = input("Choose a field: ")
+            choice = input("Choose a grid: ")
             if choice == abort_sequence:
                 return choice
             choice = int(choice) - 1
             if choice < 0 or choice > 8:
-                print("Error, only fields 1 to 9 are allowed. Try again.")
-            elif grid[choice] == symbol(1) or grid[choice] == symbol(2):
-                print("Error, field is already filled. Try again.")
+                print("Error, only grids 1 to 9 are allowed. Try again.")
+            elif board[choice] == symbol(1) or board[choice] == symbol(2):
+                print("Error, grid is already filled. Try again.")
             else:
                 return choice
         except ValueError:

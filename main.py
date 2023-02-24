@@ -4,46 +4,55 @@
 # Requirements: python random plckage
 
 import game as game
-import grid as gr
+import board as bd
+import player as pl
 
 def gamehelp():
-    print("Solo modus is the default. The AI plays random.\n" + 
+    print("Solo mode is the default. The AI plays random.\n" + 
           "You have the following options:\n" +
           "- help text\t\t'help'\n" + 
-          "- swap the symbols for player 1 and 2\t'symbolselect'\n" +
-          "- two player modus\t'twoplayer'\n" + 
-          "- solo modus vs AI\t'oneplayer'\n" +
+          "- switch symbols\t'switchmark'\n" +
+          "- two player mode\t'twoplayer'\n" + 
+          "- solo mode vs AI\t'singleplayer'\n" +
           "- start a game\t\t'start'\n" + 
-          "- exit a game \t\t'q'\n" + 
+          "- exit a game in grid prompt\t'q'\n" + 
           "- end the program\t'exit'")
-    
-def playerselect():
-    "prompt the user to pick a color"
 
+def scoreboard(wincounter):
+    print("\nScoreboard\n" + 
+          "Draws\tPlayer " + str(pl.symbol(1)) + "\tPlayer " + str(pl.symbol(2)) + "\n" +
+          str(wincounter[0]) + "\t" + str(wincounter[1]) + "\t\t" + str(wincounter[2]))
+
+# defaults
 games = 1
 aimode = True
-
+wincounter = [0,0,0]
 print("Welcome to tic-tac-toe!")
 gamehelp()
 while True:
-    prompt = input("\nGame Options: ")
+    scoreboard(wincounter)
+    prompt = input("Choose an option: ")
     if prompt == "help":
         gamehelp()
         continue
-    if prompt == "oneplayer":
+    if prompt == "singleplayer":
         aimode = True
         continue
     if prompt == "twoplayer":
         aimode = False
         continue
+    if prompt == "switchmark":
+        pl.switchmark()
+        continue
     if prompt == "start":
         print("\nGAME", games)
-        grid = gr.creategrid()
-        game.turn(grid, aimode)
+        board = bd.createboard()
+        gameresult = game.game(board, aimode)
+        wincounter[gameresult] += 1
         games += 1
         continue
     if prompt == "exit":
         print("Program has been terminated.")
         break
     else:
-        print("Error, wrong input. Try again.")
+        print("Error, unknown input. Try again.")

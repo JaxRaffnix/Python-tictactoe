@@ -2,10 +2,10 @@ import player as pl
 import random
 
 
-def aimove(grid):
-    "Choose a random, valid field and return the choice."
+def aimove(board):
+    "Choose a random, valid grid and return the choice."
     selection = []
-    for i in grid:
+    for i in board:
         if i != pl.symbol(1) and i != pl.symbol(2):
             selection += i
 

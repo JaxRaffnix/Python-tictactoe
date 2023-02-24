@@ -1,8 +1,8 @@
 import endgame as eg
-import grid as gr
+import board as gr
 import player as pl
 
-grid = ["0", "1", "2", 
+board = ["0", "1", "2", 
         "X", "X", "X", 
         "6", "7", "8",]
 
@@ -11,10 +11,10 @@ winconditions = [[0,1,2], [3,4,5], [6,7,8],     # horizontal
                  [0,4,8], [2,4,6]]              # diagonal
 
 for list in winconditions:
-    if all(grid[i] == pl.symbol(1) for i in list) or all(grid[i] == pl.symbol(2) for i in list):
+    if all(board[i] == pl.symbol(1) for i in list) or all(board[i] == pl.symbol(2) for i in list):
         print(True)
         break
 
-# print(checkwin(grid))
-gr.printgrid(grid)
-eg.checkgameend(grid, 1)
+# print(checkwin(board))
+bd.printboard(board)
+eg.checkgameend(board, 1)
