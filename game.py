@@ -2,13 +2,12 @@ import endgame as eg
 import board as bd
 import player as pl
 import randomai as rai
-import random
 
 
-def game(board, aimode):
+def game(board, aimode, startplayer):
     "loop through each players turn. Return the winner or a 0 in case of draw."
     turn = 1
-    currentplayer = randomstart()
+    currentplayer = startplayer
     while True:
         if currentplayer == 2 and aimode:
             grid = rai.aimove(board)
@@ -48,11 +47,8 @@ def switch(player):
     "Switch control over to the other player."
     if player == 1:
         return 2
-    else:
+    if player == 2:
         return 1
-
-
-def randomstart():
-    "Choose a random starting player."
-    return random.randint(1, 2)
-
+    else:
+        print("Error, unsupported player number: " + str(player))
+        ValueError()

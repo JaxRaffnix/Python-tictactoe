@@ -18,5 +18,6 @@ def checkdraw(board):
 
 
 def checkabort(grid):
+    "Return True if argument is abort sequence"
     if grid == pl.abort_sequence:
         return True
