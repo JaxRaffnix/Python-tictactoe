@@ -44,15 +44,19 @@ while True:
     prompt = input("Choose an option: ")
     showscore = True
     if prompt == "help":
+        showscore = False
         gamehelp()
         continue
     if prompt == "singleplayer":
+        showscore = False
         aimode = True
         continue
     if prompt == "twoplayer":
+        showscore = False
         aimode = False
         continue
     if prompt == "switchmark":
+        showscore = False
         pl.switchmark()
         continue
     if prompt == "start":

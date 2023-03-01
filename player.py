@@ -1,3 +1,6 @@
+PLAYER_1  = 1
+PLAYER_2 = 2
+
 class color:
     YELLOW = "\033[93m"
     BLUE = "\033[94m"
@@ -13,7 +16,7 @@ def switchmark():
 
 def symbol(player):
     "return colored O for player 1 and X for player 2."
-    if player == 1:
+    if player == PLAYER_1:
         if markswitch:
             return player2_symbol
         else:
